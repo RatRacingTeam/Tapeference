@@ -38,9 +38,9 @@ namespace Zenject
             {
                 return base.PropertyDisplayNames.Concat(new string[]
                     {
-                        "Late Installers",
-                        "Late Prefab Installers",
-                        "Late Scriptable Object Installers"
+                        "Late GlobalInstallers",
+                        "Late Prefab GlobalInstallers",
+                        "Late Scriptable Object GlobalInstallers"
                     })
                     .ToArray();
             }

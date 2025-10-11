@@ -24,9 +24,9 @@ namespace Zenject
             {
                 return new string[]
                 {
-                    "Scriptable Object Installers",
-                    "Mono Installers",
-                    "Prefab Installers",
+                    "Scriptable Object GlobalInstallers",
+                    "Mono GlobalInstallers",
+                    "Prefab GlobalInstallers",
                 };
             }
         }

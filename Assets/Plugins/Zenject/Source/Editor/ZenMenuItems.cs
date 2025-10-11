@@ -96,7 +96,7 @@ namespace Zenject.Internal
                   "using UnityEngine;"
                 + "\nusing Zenject;"
                 + "\n"
-                + "\n[CreateAssetMenu(fileName = \"CLASS_NAME\", menuName = \"Installers/CLASS_NAME\")]"
+                + "\n[CreateAssetMenu(fileName = \"CLASS_NAME\", menuName = \"GlobalInstallers/CLASS_NAME\")]"
                 + "\npublic class CLASS_NAME : ScriptableObjectInstaller<CLASS_NAME>"
                 + "\n{"
                 + "\n    public override void InstallBindings()"

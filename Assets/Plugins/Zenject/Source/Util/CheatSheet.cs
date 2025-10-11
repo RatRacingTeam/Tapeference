@@ -329,7 +329,7 @@ namespace Zenject
 
         void InstallMore4()
         {
-            ///////////// Installing Other Installers
+            ///////////// Installing Other GlobalInstallers
 
             // Immediately call InstallBindings() on FooInstaller
             FooInstaller.Install(Container);

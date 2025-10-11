@@ -9,5 +9,6 @@ EditorBuildSettings:
     path: Assets/Global/GameResources/Scenes/BootstrapScene.unity
     guid: 763789cd4c25137418c60e8aa14a3534
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: ffc15c01ad783694dbf1a5010608f575, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
   m_UseUCBPForAssetBundles: 0

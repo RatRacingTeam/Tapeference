@@ -17,7 +17,7 @@ namespace Zenject
         [SerializeField]
         List<ScriptableObjectInstaller> _scriptableObjectInstallers = new List<ScriptableObjectInstaller>();
 
-        [FormerlySerializedAs("Installers")]
+        [FormerlySerializedAs("GlobalInstallers")]
         [FormerlySerializedAs("_installers")]
         [SerializeField]
         List<MonoInstaller> _monoInstallers = new List<MonoInstaller>();
@@ -161,7 +161,7 @@ namespace Zenject
             //      - Normal installers given directly via code
             //      - ScriptableObject installers
             //      - MonoInstallers in the scene
-            //      - Prefab Installers
+            //      - Prefab GlobalInstallers
             //
             // We put ScriptableObject installers before the MonoInstallers because
             // ScriptableObjectInstallers are often used for settings (including settings

@@ -60,7 +60,7 @@ namespace Zenject
         static bool ShouldAllowDuringValidationInternal(Type type)
         {
             // During validation, do not instantiate or inject anything except for
-            // Installers, IValidatable's, or types marked with attribute ZenjectAllowDuringValidation
+            // GlobalInstallers, IValidatable's, or types marked with attribute ZenjectAllowDuringValidation
             // You would typically use ZenjectAllowDuringValidation attribute for data that you
             // inject into factories
 
