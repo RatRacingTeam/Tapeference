@@ -1,4 +1,5 @@
-﻿using Features.CoroutineModule.Scripts.Installers;
+﻿using Features.AssetsManagementModule.Scripts.Installers;
+using Features.CoroutineModule.Scripts.Installers;
 using Features.GameFlowModule.Scripts.Installers;
 using UnityEngine;
 using Zenject;
@@ -9,7 +10,9 @@ namespace Features.BootstrapModule.Scripts.GlobalInstallers {
         public override void InstallBindings() {
             CoroutineInstaller.Install(Container);
             GameFlowInstaller.Install(Container);
+            AssetLoaderInstaller.Install(Container);
             DataInstaller.Install(Container);
+            ConfigurationsInstaller.Install(Container);
         }
     }
 }

@@ -1,4 +1,20 @@
-﻿{
-  "name": "BootstrapModule.GlobalInstallers",
-  "references":[ "GUID:0d8beb7f090555447a6cf5ce9e54dbb4", "GUID:3ee29d10060242e4a4dd91d80e323efd", "GUID:ae9830e887eb4354a00c58ab92d44d5c", "GUID:a28c6db57cc94af49f0aba77d0d526b4", "GUID:0781fa2f18f348a1b5142f7c25975397", "GUID:703ccf2220054b18aa2ac27b01be9781" ]
+{
+    "name": "BootstrapModule.GlobalInstallers",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:3ee29d10060242e4a4dd91d80e323efd",
+        "GUID:ae9830e887eb4354a00c58ab92d44d5c",
+        "GUID:703ccf2220054b18aa2ac27b01be9781",
+        "GUID:c4d77583df5f4bee81e321577a1ca28d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
