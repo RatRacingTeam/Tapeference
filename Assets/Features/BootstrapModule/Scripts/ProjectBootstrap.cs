@@ -1,13 +1,17 @@
-﻿using UnityEngine;
+﻿using Features.GameFlowModule.Scripts;
+using Features.GameFlowModule.Scripts.GameStates;
+using UnityEngine;
+using Zenject;
 
 namespace Features.BootstrapModule.Scripts {
     public class ProjectBootstrap : MonoBehaviour {
-        [SerializeField] private GameObject _projectUtilitiesObject;
+        private GameFlowStateMachine _gameFlowStateMachine;
 
-        private void Awake() =>
-            DontDestroyOnLoad(_projectUtilitiesObject);
+        [Inject]
+        public void InjectDependencies(GameFlowStateMachine gameFlowStateMachine) =>
+            _gameFlowStateMachine = gameFlowStateMachine;
 
         private void Start() =>
-            Debug.LogError("Bootstrapping project");
+            _gameFlowStateMachine.EnterState<GameState>();
     }
 }

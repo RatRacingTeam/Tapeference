@@ -1,3 +1,4 @@
 ﻿{
-  "name": "BootstrapModule"
+  "name": "BootstrapModule",
+  "references":[ "GUID:ae9830e887eb4354a00c58ab92d44d5c", "GUID:f7e546e9dc124be79bb6c7c93072c57f", "GUID:8ae1f95fec54404399024bc5536de44d" ]
 }

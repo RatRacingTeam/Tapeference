@@ -116,7 +116,7 @@ namespace Zenject
         public static string GetDefaultResourcePath<TInstaller>()
             where TInstaller : ScriptableObjectInstallerBase
         {
-            return "Installers/" + typeof(TInstaller).PrettyName();
+            return "GlobalInstallers/" + typeof(TInstaller).PrettyName();
         }
 
         public static TInstaller CreateInstaller<TInstaller>(
