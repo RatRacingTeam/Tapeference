@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Assertions;
@@ -20,8 +21,9 @@ namespace Features.ScenesManagementModule.Scripts {
             AsyncOperationHandle<SceneInstance> sceneOperationHandle = Addressables.LoadSceneAsync(sceneName, GetSceneLoadMode(unloadRedundant));
             await sceneOperationHandle.Task;
             if (sceneOperationHandle.Status == AsyncOperationStatus.Failed) {
+                string operationException = sceneOperationHandle.OperationException.Message; 
                 sceneOperationHandle.Release();
-                Assert.IsFalse(true, $"Unable to load scene {sceneName} because {sceneOperationHandle.OperationException}");
+                Assert.IsFalse(true, $"Unable to load scene {sceneName} because {operationException}");
             }
             _loadedScenes[sceneName] = sceneOperationHandle;
         }
@@ -32,9 +34,10 @@ namespace Features.ScenesManagementModule.Scripts {
 
             AsyncOperationHandle<SceneInstance> unloadSceneOperationHandle = Addressables.UnloadSceneAsync(sceneOperationHandle);
             await unloadSceneOperationHandle.Task;
-            Assert.IsFalse(unloadSceneOperationHandle.Status == AsyncOperationStatus.Failed, 
-                $"Unable to unload scene {sceneName} because {unloadSceneOperationHandle.OperationException}");
+            string operationException = unloadSceneOperationHandle.OperationException.Message;
             unloadSceneOperationHandle.Release();
+            Assert.IsFalse(unloadSceneOperationHandle.Status == AsyncOperationStatus.Failed, 
+                $"Unable to unload scene {sceneName} because {operationException}");
             _loadedScenes.Remove(sceneName);
         }
 

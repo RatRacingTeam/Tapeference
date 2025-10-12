@@ -1,17 +1,17 @@
-﻿using Cysharp.Threading.Tasks;
-using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Assertions;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using Object = UnityEngine.Object;
 
 namespace Features.AssetsManagementModule.Scripts {
     public class AddressableAssetLoaderService : IAddressableAssetLoaderService {
-        private readonly AddressablesAssetsModel _addressablesAssetsModel;
-
-        public AddressableAssetLoaderService(AddressablesAssetsModel addressablesAssetsModel) =>
-            _addressablesAssetsModel = addressablesAssetsModel;
+        private readonly Dictionary<string, AsyncOperationHandle> _cachedAssets = new();
         
         public async UniTask<T> LoadAssetAsync<T>(string assetName) where T : Object {
-            if (_addressablesAssetsModel.CachedAddressableAssets.TryGetValue(assetName, out AsyncOperationHandle cachedAssetHandle))
+            if (_cachedAssets.TryGetValue(assetName, out AsyncOperationHandle cachedAssetHandle))
                 return cachedAssetHandle.Result as T;
             
             AsyncOperationHandle<T> operationHandle = Addressables.LoadAssetAsync<T>(assetName);
@@ -20,7 +20,7 @@ namespace Features.AssetsManagementModule.Scripts {
         }
 
         public T LoadAsset<T>(string assetName) where T : Object {
-            if (_addressablesAssetsModel.CachedAddressableAssets.TryGetValue(assetName, out AsyncOperationHandle cachedAssetHandle))
+            if (_cachedAssets.TryGetValue(assetName, out AsyncOperationHandle cachedAssetHandle))
                 return cachedAssetHandle.Result as T;
             
             AsyncOperationHandle<T> operationHandle = Addressables.LoadAssetAsync<T>(assetName);
@@ -29,20 +29,21 @@ namespace Features.AssetsManagementModule.Scripts {
         }
 
         public void UnloadAsset(string assetName) {
-            if (!_addressablesAssetsModel.CachedAddressableAssets.TryGetValue(assetName, out AsyncOperationHandle cachedAssetHandle))
+            if (!_cachedAssets.TryGetValue(assetName, out AsyncOperationHandle cachedAssetHandle))
                 return;
             
             cachedAssetHandle.Release();
-            _addressablesAssetsModel.RemoveCachedAddressableAsset(assetName);
+            _cachedAssets.Remove(assetName);
         }
         
         private T ProcessOperationResult<T>(string assetName, AsyncOperationHandle<T> operationHandle) where T : Object {
-            if (operationHandle.Status != AsyncOperationStatus.Succeeded) {
+            if (operationHandle.Status == AsyncOperationStatus.Failed) {
+                string operationException = operationHandle.OperationException.Message;
                 operationHandle.Release();
-                return null;
+                Assert.IsTrue(false, $"Failed to process operation on asset {assetName} because {operationException}");
             }
-            
-            _addressablesAssetsModel.AddCachedAddressableAsset(assetName, operationHandle);
+
+            _cachedAssets[assetName] = operationHandle;
             return operationHandle.Result;
         }
     }
