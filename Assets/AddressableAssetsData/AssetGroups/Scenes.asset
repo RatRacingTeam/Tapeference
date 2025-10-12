@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Scenes
   m_GUID: b9cdb00bce97a0d4ab0aa9981e5e8ce3
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: e7cf33c27ae1fc34088aa3d5a07fabe9
+    m_Address: GameScene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9f0376763e6a38c408dee95614d866d7, type: 2}
   m_SchemaSet:

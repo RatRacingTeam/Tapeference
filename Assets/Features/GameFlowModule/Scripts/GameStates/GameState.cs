@@ -1,10 +1,16 @@
-﻿using UnityEngine;
+﻿using Features.ScenesManagementModule.Scripts;
+using Global.Scripts.Addressables;
 
 namespace Features.GameFlowModule.Scripts.GameStates {
     public class GameState : GameFlowState {
-        protected override void OnEnteredState() {
-            Debug.LogError("Entered game state");
-        }
+        private readonly ISceneLoaderFacadeService _sceneLoaderService;
+
+        public GameState(ISceneLoaderFacadeService sceneLoaderService) {
+            _sceneLoaderService = sceneLoaderService;
+        } 
+        
+        protected override void OnEnteredState() =>
+            _sceneLoaderService.LoadSceneAsync(AssetAddress.Scenes.GameScene);
 
         protected override void OnExitedState() { }
     }

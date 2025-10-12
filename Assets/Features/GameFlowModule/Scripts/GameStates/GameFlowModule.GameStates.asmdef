@@ -1,4 +1,4 @@
 ﻿{
   "name": "GameFlowModule.GameStates",
-  "references":[ "GUID:8ae1f95fec54404399024bc5536de44d" ]
+  "references":[ "GUID:8ae1f95fec54404399024bc5536de44d", "GUID:9b58771f88a444c09439e20f64e204d7", "GUID:c4d77583df5f4bee81e321577a1ca28d", "GUID:f51ebe6a0ceec4240a699833d6309b23" ]
 }
